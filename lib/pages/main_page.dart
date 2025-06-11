@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx_app/pages/mobx/contador_mobx_page.dart';
+import 'package:mobx_app/pages/mobx/contador_mobx_store_page.dart';
 import 'package:mobx_app/pages/tarefas_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -35,6 +36,7 @@ class _MainPageState extends State<MainPage> {
             },
             children: [
               ContadorMobXPage(),
+              ContadorMobXStorePage(),
               TarefasPage(),
             ],
           )),
@@ -54,7 +56,10 @@ class _MainPageState extends State<MainPage> {
                   BottomNavigationBarItem(
                       label: "Contador", icon: Icon(Icons.numbers_rounded)),
                   BottomNavigationBarItem(
-                      label: "Tarefas", icon: Icon(Icons.checklist_rounded))
+                      label: "Contador Store",
+                      icon: Icon(Icons.onetwothree_sharp)),
+                  BottomNavigationBarItem(
+                      label: "Tarefas", icon: Icon(Icons.checklist_rounded)),
                 ]),
           )
         ],
