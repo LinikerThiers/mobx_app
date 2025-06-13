@@ -6,7 +6,7 @@ part 'lista_tarefa_mobx.g.dart';
 class ListaTarefaMobX = _ListaTarefaMobX with _$ListaTarefaMobX;
 
 abstract class _ListaTarefaMobX with Store {
-  ObservableList<TarefaMobX> _tarefas = ObservableList<TarefaMobX>();
+  final ObservableList<TarefaMobX> _tarefas = ObservableList<TarefaMobX>();
 
   @computed
   List<TarefaMobX> get tarefas => apenasNaoConcluidos
