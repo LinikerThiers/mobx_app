@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_app/services/counter_mobx_service.dart';
 
+import '../../main.dart';
+
 class ContadorMobXPage extends StatelessWidget {
   ContadorMobXPage({super.key});
-  final counterMobXService = CounterMobxService();
+  final counterMobXService = getIt<CounterMobxService>();
 
   @override
   Widget build(BuildContext context) {
