@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx_app/main.dart';
 import 'package:mobx_app/models/lista_tarefa_mobx.dart';
+import 'package:mobx_app/shared/widgets/tarefa_item.dart';
 
 class TarefasPage extends StatelessWidget {
   final descricaoController = TextEditingController();
-  final listaTarefasMobX = ListaTarefaMobX();
+  final listaTarefasMobX = getIt<ListaTarefaMobX>();
 
   TarefasPage({super.key});
 
@@ -68,23 +70,7 @@ class TarefasPage extends StatelessWidget {
                   itemCount: listaTarefasMobX.tarefas.length,
                   itemBuilder: (BuildContext bc, int index) {
                     var tarefa = listaTarefasMobX.tarefas[index];
-                    return Observer(builder: (context) {
-                      return Dismissible(
-                          onDismissed:
-                              (DismissDirection dismissDirection) async {
-                            listaTarefasMobX.excluir(tarefa.id);
-                          },
-                          key: Key(tarefa.id),
-                          child: ListTile(
-                            title: Text(tarefa.descricao),
-                            trailing: Switch(
-                                value: tarefa.concluido,
-                                onChanged: (bool value) async {
-                                  listaTarefasMobX.alterar(
-                                      tarefa.id, tarefa.descricao, value);
-                                }),
-                          ));
-                    });
+                    return TarefaItem(tarefa: tarefa);
                   });
             }))
           ],
